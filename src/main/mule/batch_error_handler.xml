@@ -54,7 +54,7 @@ output application/json
 }]]></ee:set-payload>
 							</ee:message>
 						</ee:transform>
-						<file:write doc:name="Write" doc:id="a0b731dd-1b53-43dc-9f40-e27af8d69fd9" config-ref="File_Config" path="#['correct-file' ++ ( now()as String {format: 'yyyy-MM-dd-hh-mm-ss'}) ++ '-' ++ (random()*1000) ++ '.txt']"/>
+						<file:write doc:name="write on file" doc:id="a0b731dd-1b53-43dc-9f40-e27af8d69fd9" config-ref="File_Config" path="#['correct-file' ++ ( now()as String {format: 'yyyy-MM-dd-hh-mm-ss'}) ++ '-' ++ (random()*1000) ++ '.txt']"/>
 					</batch:aggregator>
 				</batch:step>
 			</batch:process-records>
@@ -74,7 +74,7 @@ msg: "Batch processing completed"
 		</ee:transform>
 	</flow>
 	<flow name="batch_error_handlerFlow1" doc:id="4e2e2366-2d85-422f-99f9-0e399bd268f1" >
-		<vm:listener queueName="Error_file" doc:name="Listener" doc:id="5d58ac8e-038f-459c-911c-33179ef6cb8f" config-ref="VM_Config"/>
+		<vm:listener queueName="Error_file" doc:name="VM Listener" doc:id="5d58ac8e-038f-459c-911c-33179ef6cb8f" config-ref="VM_Config"/>
 		<file:write doc:name="Write" doc:id="42853e67-047d-435f-882e-225a1abff88e" path="#['Error-file' ++ (now()as String {format: 'yyyy-MM-dd-hh-mm-ss'}) ++ '-' ++ (random()*100) ++ '.txt']" config-ref="File_Config"/>
 	</flow>
 </mule>
