@@ -24,8 +24,18 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
-				<configuration>
-				</configuration>
+			<configuration>
+				<cloudHubDeployment>
+				<objectStoreV2>true</objectStoreV2>
+				<username>StudMule</username>
+				<password>Abcd1234.</password>
+				<environment>Sandbox</environment>
+				<workerType>micro</workerType>
+				<workers>1</workers>
+				<applicationName>BatchErrorHandlerApp</applicationName>
+				<muleVersion>4.2.2</muleVersion> 
+				</cloudHubDeployment>	
+			</configuration>
 			</plugin>
 		</plugins>
 	</build>
